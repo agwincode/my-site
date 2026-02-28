@@ -1,0 +1,473 @@
+---
+import Base from '../layouts/Base.astro';
+
+const posts = [
+  {
+    title: "The differentiation trap: how to stand out in an AI-first world",
+    excerpt: "When every company can ship faster and cheaper with AI, the old playbooks for differentiation break down. Here's how to think about standing out when your competitors have the same tools you do.",
+    date: "Feb 10, 2026",
+    tag: "Strategy",
+    link: "#",
+    featured: true,
+  },
+  {
+    title: "What founders get wrong about their first marketing hire",
+    excerpt: "Hiring a VP of Marketing before you have repeatable motion is one of the most expensive mistakes an early-stage company can make.",
+    date: "Jan 22, 2026",
+    tag: "Hiring",
+    link: "#",
+    featured: false,
+  },
+  {
+    title: "Setting up your growth engine",
+    excerpt: "Most companies try to layer growth on top of a broken foundation. Here's how to build the engine correctly from the start — the right channels, metrics, and sequencing.",
+    date: "Jan 8, 2026",
+    tag: "Operations",
+    link: "#",
+    featured: false,
+  },
+  {
+    title: "The importance of product marketing",
+    excerpt: "Product marketing is the connective tissue between what you build and how you sell it. Most early-stage companies don't invest in it until it's already too late.",
+    date: "Dec 15, 2025",
+    tag: "Growth",
+    link: "#",
+    featured: false,
+  },
+];
+
+const podcasts = [
+  {
+    show: "Run the Numbers with CJ Gustafson",
+    title: "Marketing as a Form of Capital Allocation",
+    description: "CJ Gustafson and I dig into the parallels between marketing and investing — how to think about media spend as capital allocation, the difference between brand and demand gen, and why attribution models lie to you.",
+    link: "https://www.mostlymetrics.com/p/marketing-as-a-form-of-capital-allocation",
+    platform: "Mostly Metrics / Run the Numbers",
+    logo: "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/e3/d3/bf/e3d3bf3b-21de-79a7-031d-39b9bbda1691/mza_17857270987903482118.jpeg/1200x1200bf.webp",
+    bgColor: "#4A6868",
+  },
+  {
+    show: "Women in Venture Capital",
+    title: "A Conversation with Angela Winegar",
+    description: "My path from Bain to Harvard to Dorm Room Fund Managing Partner — what I learned investing in student founders, how it shaped how I think about GTM, and advice for women building careers in venture.",
+    link: "https://open.spotify.com/episode/3qV167AphXF81opUyy0QN0",
+    platform: "Spotify",
+    logo: "https://www.buzzsprout.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCQ2R5SHdFPSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--b1d7124f4a21a9762b7f603a6694c24f7adfbbf3/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9MWm05eWJXRjBPZ2hxY0djNkUzSmxjMmw2WlY5MGIxOW1hV3hzV3docEFmcHBBZnA3QmpvSlkzSnZjRG9MWTJWdWRISmxPZ3B6WVhabGNuc0dPZ3h4ZFdGc2FYUjVhVUU2RUdOdmJHOTFjbk53WVdObFNTSUpjM0puWWdZNkJrVlUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--bfdad5b04912fa8a9db85eb3989e46c5908e2723/WOMEN%20IN%20VENTURE%20CAPITAL%20(3).jpg",
+    bgColor: "#7D3933",
+  },
+];
+
+const talks = [
+  {
+    event: "PLGTM Expo X · 2024",
+    title: "Introducing PLG in a Sales-Led Organization",
+    description: "How Carta built and launched its freemium cap table product, Carta Launch, inside an existing sales-led company. What works when you're running PLG and sales motions in parallel, where they conflict, and what the team learned two years into the experiment.",
+    link: "https://plgtm.substack.com/p/introducing-plg-in-a-sales-led-organization",
+  },
+];
+
+const papers = [
+  {
+    title: "How Much Is Data Privacy Worth? A Preliminary Investigation",
+    coauthor: "Co-authored with Cass R. Sunstein",
+    meta: "Journal of Consumer Policy · 2019",
+    abstract: "In a survey of 2,416 Americans, the median consumer is willing to pay just $5/month to maintain data privacy, but demands $80 to allow access — a 'superendowment effect' far exceeding the typical 1:2 willingness-to-pay ratio. The paper argues that behavioral biases make both measures unreliable guides for policymakers.",
+    link: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3413277",
+  },
+  {
+    title: "Emerging Issues in Economic Diplomacy",
+    coauthor: "Co-authored with HKS classmates",
+    meta: "Belfer Center, Harvard Kennedy School · April 2020",
+    abstract: "A collection of nine graduate student policy papers on contemporary economic diplomacy. Winegar authored Section 4: \"Developing Data Privacy Regulation\" — examining how the U.S. should approach federal privacy legislation, with comparative analysis of the CCPA and GDPR.",
+    link: "https://www.belfercenter.org/publication/emerging-issues-economic-diplomacy",
+  },
+];
+
+const featured = posts.find(p => p.featured);
+const rest = posts.filter(p => !p.featured);
+---
+
+<Base title="Writing — Angela Winegar" description="Essays on GTM, hiring, and building revenue teams.">
+  <style>
+    .featured-post {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      padding: 3rem;
+      background: var(--color-surface-dark);
+      color: var(--color-bg);
+      border-radius: var(--radius);
+      margin-bottom: 2rem;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .featured-post:hover { opacity: 0.92; }
+
+    .featured-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .featured-label::before { content: '■'; font-size: 0.5rem; }
+
+    .featured-post h2 {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: #F7F3EE;
+    }
+
+    .featured-post p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #9A9289;
+    }
+
+    .featured-meta { font-size: 0.8rem; color: #6A6259; margin-top: 1.5rem; }
+
+    .featured-arrow { display: flex; justify-content: flex-end; align-items: center; }
+
+    .arrow-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 1px solid #444;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      color: #F7F3EE;
+    }
+
+    .post-list {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 5rem;
+    }
+
+    .post-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: start;
+      padding: 1.75rem 2rem;
+      background: var(--color-bg);
+      text-decoration: none;
+      color: var(--color-text);
+      border-bottom: 1px solid var(--color-border);
+      transition: background 0.15s;
+    }
+
+    .post-item:last-child { border-bottom: none; }
+    .post-item:hover { background: var(--color-surface); }
+
+    .post-tag {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-teal);
+      margin-bottom: 0.4rem;
+    }
+
+    .post-item h3 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      line-height: 1.3;
+    }
+
+    .post-item p { font-size: 0.875rem; color: var(--color-muted); line-height: 1.6; }
+    .post-date { font-size: 0.78rem; color: var(--color-muted); white-space: nowrap; padding-top: 0.2rem; }
+
+    /* Research paper */
+    .paper-card {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      background: var(--color-surface);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: start;
+      margin-bottom: 1rem;
+      text-decoration: none;
+      color: var(--color-text);
+      transition: border-color 0.15s;
+    }
+
+    .paper-card:last-child { margin-bottom: 5rem; }
+
+    .paper-card:hover { border-color: var(--color-accent); }
+
+    .paper-meta {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-teal);
+      margin-bottom: 0.5rem;
+    }
+
+    .paper-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      line-height: 1.3;
+    }
+
+    .paper-coauthor {
+      font-size: 0.82rem;
+      color: var(--color-muted);
+      margin-bottom: 0.85rem;
+    }
+
+    .paper-card p { font-size: 0.875rem; color: var(--color-muted); line-height: 1.7; }
+
+    .paper-arrow {
+      font-size: 1.25rem;
+      color: var(--color-muted);
+      padding-top: 0.25rem;
+    }
+
+    /* Podcasts */
+    .podcast-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.875rem;
+      margin-bottom: 5rem;
+    }
+
+    .podcast-card {
+      background: var(--pod-bg, var(--color-teal));
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-decoration: none;
+      color: #F7F3EE;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .podcast-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 32px rgba(46,44,41,0.22);
+    }
+
+    .pod-header {
+      margin-bottom: 1.25rem;
+    }
+
+    .pod-logo {
+      width: 72px;
+      height: 72px;
+      border-radius: 10px;
+      object-fit: cover;
+      display: block;
+      margin-bottom: 0.85rem;
+    }
+
+    .podcast-show {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(247,243,238,0.6);
+      line-height: 1.4;
+    }
+
+    .podcast-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.85rem;
+      line-height: 1.3;
+      color: #F7F3EE;
+    }
+
+    .podcast-card p {
+      font-size: 0.85rem;
+      color: rgba(247,243,238,0.65);
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .podcast-listen {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: rgba(247,243,238,0.5);
+      transition: color 0.15s;
+    }
+
+    .podcast-card:hover .podcast-listen {
+      color: #F7F3EE;
+    }
+
+    .play-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1px solid rgba(247,243,238,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+    }
+
+    /* Talks */
+    .talk-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: start;
+      padding: 2rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: var(--color-text);
+      margin-bottom: 5rem;
+      transition: border-color 0.15s;
+    }
+
+    .talk-card:hover { border-color: var(--color-teal); }
+
+    .talk-event {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-teal);
+      margin-bottom: 0.5rem;
+    }
+
+    .talk-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .talk-card p { font-size: 0.875rem; color: var(--color-muted); line-height: 1.7; }
+
+    .talk-arrow { font-size: 1.25rem; color: var(--color-muted); padding-top: 0.25rem; }
+
+    @media (max-width: 680px) {
+      .featured-post { grid-template-columns: 1fr; }
+      .featured-arrow { display: none; }
+      .podcast-list { grid-template-columns: 1fr; }
+      .paper-card { grid-template-columns: 1fr; }
+      .talk-card { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <div class="label">Podcasts</div>
+  <h1 class="section-heading">Appearances</h1>
+  <p class="section-sub">Conversations about GTM, venture, and the career in between.</p>
+
+  <div class="podcast-list">
+    {podcasts.map((p) => (
+      <a href={p.link} target="_blank" class="podcast-card" style={`--pod-bg: ${p.bgColor}`}>
+        <div class="pod-header">
+          <img src={p.logo} class="pod-logo" alt={p.show} onerror="this.style.display='none'" />
+          <div class="podcast-show">{p.show}</div>
+        </div>
+        <h3>{p.title}</h3>
+        <p>{p.description}</p>
+        <div class="podcast-listen">
+          <div class="play-icon">▶</div>
+          Listen on {p.platform}
+        </div>
+      </a>
+    ))}
+  </div>
+
+  <div class="label">Talks</div>
+  <h2 class="section-heading">Speaking</h2>
+  <p class="section-sub">Selected public appearances, conference talks, and panel sessions.</p>
+
+  <img
+    src="/speaking.webp"
+    alt="Angela Winegar speaking at PLGTM Expo"
+    style="width:100%; border-radius: var(--radius); display:block; margin-bottom: 1.5rem; object-fit:cover; max-height: 480px;"
+  />
+
+  {talks.map((t) => (
+    <a href={t.link} target="_blank" class="talk-card">
+      <div>
+        <div class="talk-event">{t.event}</div>
+        <h3>{t.title}</h3>
+        <p>{t.description}</p>
+      </div>
+      <div class="talk-arrow">↗</div>
+    </a>
+  ))}
+
+  <div class="label">Writing</div>
+  <h2 class="section-heading">Essays & Ideas</h2>
+  <p class="section-sub">On go-to-market strategy, building revenue teams, and the things I wish someone had told me sooner.</p>
+
+  {featured && (
+    <a href={featured.link} class="featured-post">
+      <div>
+        <div class="featured-label">{featured.tag}</div>
+        <h2>{featured.title}</h2>
+        <p>{featured.excerpt}</p>
+        <div class="featured-meta">{featured.date}</div>
+      </div>
+      <div class="featured-arrow">
+        <div class="arrow-circle">↗</div>
+      </div>
+    </a>
+  )}
+
+  <div class="post-list">
+    {rest.map((post) => (
+      <a href={post.link} class="post-item">
+        <div>
+          <div class="post-tag">{post.tag}</div>
+          <h3>{post.title}</h3>
+          <p>{post.excerpt}</p>
+        </div>
+        <span class="post-date">{post.date}</span>
+      </a>
+    ))}
+  </div>
+
+  <div class="label">Research</div>
+  <h2 class="section-heading">Published Work</h2>
+  <p class="section-sub">Academic research from graduate school at Harvard.</p>
+
+  {papers.map((p) => (
+    <a href={p.link} target="_blank" class="paper-card">
+      <div>
+        <div class="paper-meta">{p.meta}</div>
+        <h3>{p.title}</h3>
+        <div class="paper-coauthor">{p.coauthor}</div>
+        <p>{p.abstract}</p>
+      </div>
+      <div class="paper-arrow">↗</div>
+    </a>
+  ))}
+</Base>

@@ -1,0 +1,303 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Angela Winegar — GTM Leader & Founder Advisor">
+  <style>
+    /* ── Hero ── */
+    .hero {
+      margin-bottom: 5rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      margin-bottom: 2rem;
+      max-width: 800px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--color-accent);
+    }
+
+    .hero-body {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--color-muted);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      max-width: 480px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      border-radius: var(--radius);
+      display: block;
+      filter: grayscale(10%);
+    }
+
+    /* ── Proof strip ── */
+    .proof-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--color-border);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 3.5rem;
+      margin-bottom: 5rem;
+    }
+
+    .proof-item {
+      background: var(--color-bg);
+      padding: 1.75rem;
+    }
+
+    .proof-logos {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      margin-bottom: 0.85rem;
+    }
+
+    .proof-logo {
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
+      object-fit: cover;
+    }
+
+    .proof-stat {
+      font-family: var(--font-display);
+      font-size: 2.25rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--color-text);
+      margin-bottom: 0.85rem;
+    }
+
+    .proof-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .proof-value {
+      font-size: 0.875rem;
+      color: var(--color-text);
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
+    /* ── Bio ── */
+    .bio {
+      margin-bottom: 5rem;
+      padding-bottom: 5rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .bio-text {
+      max-width: 640px;
+      margin-top: 2rem;
+    }
+
+    .bio-text p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--color-text);
+      margin-bottom: 1.25rem;
+    }
+
+    .bio-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── Interests ── */
+    .interests-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--color-border);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 5rem;
+    }
+
+    .interest-item {
+      background: var(--color-bg);
+      padding: 1.5rem;
+      transition: background 0.15s;
+    }
+
+    .interest-item:hover {
+      background: var(--color-surface);
+    }
+
+    .interest-name {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .interest-desc {
+      font-size: 0.825rem;
+      color: var(--color-muted);
+      line-height: 1.55;
+    }
+
+    .bio-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    /* ── Contact ── */
+    .home-contact {
+      border-top: 1px solid var(--color-border);
+      padding-top: 4rem;
+    }
+
+    .home-contact .section-sub {
+      margin-bottom: 2rem;
+    }
+
+    .contact-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 860px) {
+      .proof-strip { grid-template-columns: repeat(3, 1fr); }
+      .interests-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 580px) {
+      .hero-body { grid-template-columns: 1fr; }
+      .hero-photo { order: -1; max-width: 200px; }
+      .proof-strip { grid-template-columns: 1fr; }
+      .interests-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <section class="hero">
+    <div class="label">GTM Leader · Advisor · Angel Investor</div>
+    <h1>Go-to-market strategy<br />and early-stage <em>investing.</em></h1>
+    <div class="hero-body">
+      <div>
+        <p>I lead GTM teams, advise early-stage founders, and angel invest — mostly in sectors where I can actually be useful.</p>
+        <div class="hero-actions">
+          <a href="/cta" class="btn">Work With Me</a>
+          <a href="/content" class="btn btn-outline">Ideas</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="/headshot.avif" alt="Angela Winegar" />
+      </div>
+    </div>
+
+    <div class="proof-strip">
+      <div class="proof-item">
+        <div class="proof-logos">
+          <img src="https://www.google.com/s2/favicons?domain=hbs.edu&sz=128" class="proof-logo" alt="HBS" onerror="this.style.display='none'" />
+          <img src="https://www.google.com/s2/favicons?domain=hks.harvard.edu&sz=128" class="proof-logo" alt="HKS" onerror="this.style.display='none'" />
+          <img src="https://www.google.com/s2/favicons?domain=byu.edu&sz=128" class="proof-logo" alt="BYU" onerror="this.style.display='none'" />
+        </div>
+        <div class="proof-label">Education</div>
+        <div class="proof-value">Harvard Business School & Kennedy School, MBA/MPP · BYU, BS Economics & Business Strategy</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-logos">
+          <img src="https://www.google.com/s2/favicons?domain=bain.com&sz=128" class="proof-logo" alt="Bain" onerror="this.style.display='none'" />
+          <img src="https://www.google.com/s2/favicons?domain=carta.com&sz=128" class="proof-logo" alt="Carta" onerror="this.style.display='none'" />
+          <img src="https://www.google.com/s2/favicons?domain=inv.tech&sz=128" class="proof-logo" alt="Invisible" onerror="this.style.display='none'" />
+          <img src="https://www.google.com/s2/favicons?domain=summitpartners.com&sz=128" class="proof-logo" alt="Summit Partners" onerror="this.style.display='none'" />
+        </div>
+        <div class="proof-label">Background</div>
+        <div class="proof-value">Bain & Co. · Carta · Invisible Technologies · Summit Partners</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-stat">3×</div>
+        <div class="proof-label">Head of Growth / Marketing</div>
+        <div class="proof-value">Carta · Invisible Technologies · Freshly Picked</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bio">
+    <div class="label">Background</div>
+    <h2 class="section-heading">My background.</h2>
+    <div class="bio-text">
+      <p>My career has moved between building GTM and making bets on founders — sometimes at the same company, usually at the same time.</p>
+      <p>Today, I lead marketing and strategy at Invisible — an AI unicorn building reinforcement learning and AI infrastructure. Before that, at Carta I led growth and worked on Carta Launch. I started as a marketer at Freshly Picked in the heyday of ecommerce and emerging social.</p>
+      <p>Before operating, I was an investor. I was Managing Partner of the Boston chapter of Dorm Room Fund — First Round's student-run fund — and worked at Summit Partners and Floodgate Fund. That background shapes how I think about GTM: like a capital allocation problem, not a process checklist.</p>
+      <div class="bio-actions">
+        <a href="/cta" class="btn">Work With Me</a>
+        <a href="mailto:angwinconsulting@gmail.com" class="btn btn-outline">Say Hello</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label">Focus Areas</div>
+    <h2 class="section-heading">What I'm interested in.</h2>
+    <p class="section-sub">Where I spend my time as an operator, advisor, and investor.</p>
+    <div class="interests-grid">
+      <div class="interest-item">
+        <div class="interest-name">AI-native GTM & Infrastructure</div>
+        <div class="interest-desc">AI-powered tools changing how revenue teams actually work, from emerging data platforms to marketing and sales automation.</div>
+      </div>
+      <div class="interest-item">
+        <div class="interest-name">AI Infrastructure & RL</div>
+        <div class="interest-desc">The infrastructure AI runs on — training data, reinforcement learning, and systems tooling.</div>
+      </div>
+      <div class="interest-item">
+        <div class="interest-name">The Future of Education</div>
+        <div class="interest-desc">EdTech, learning infrastructure, and platforms rethinking how the next generation learns and works.</div>
+      </div>
+      <div class="interest-item">
+        <div class="interest-name">Product-Led Growth</div>
+        <div class="interest-desc">Designing PLG motions that complement existing sales teams rather than replace them.</div>
+      </div>
+      <div class="interest-item">
+        <div class="interest-name">Behavioral Economics</div>
+        <div class="interest-desc">Consumer decision-making, data privacy, and how cognitive biases shape markets and policy.</div>
+      </div>
+      <div class="interest-item">
+        <div class="interest-name">Early-Stage Investing</div>
+        <div class="interest-desc">Pre-seed to Series B. I look for founders where I can be the highest value-per-dollar on the cap table.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-contact">
+    <div class="label">Contact</div>
+    <h2 class="section-heading">Get in touch.</h2>
+    <div class="contact-actions">
+      <a href="mailto:angwinconsulting@gmail.com" class="btn">Say Hello</a>
+      <a href="/cta" class="btn btn-outline">See How I Work</a>
+    </div>
+  </section>
+</Base>
