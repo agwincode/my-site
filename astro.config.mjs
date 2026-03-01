@@ -1,8 +1,8 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  // Replace with your actual purchased domain
-  site: 'https://www.yournewdomain.com', 
-  // Change this from '/my-site' to just '/'
+  // Use your new domain here
+  site: 'https://www.angelawinegar.com', 
+  // Change this from '/my-site' to just a forward slash
   base: '/', 
 });
