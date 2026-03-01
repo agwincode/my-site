@@ -407,11 +407,11 @@ const rest = posts.filter(p => !p.featured);
   <h2 class="section-heading">Speaking</h2>
   <p class="section-sub">Selected public appearances, conference talks, and panel sessions.</p>
 
-  <img
-    src="/my-site/speaking.webp"
-    alt="Angela Winegar speaking at PLGTM Expo"
-    style="width:100%; border-radius: var(--radius); display:block; margin-bottom: 1.5rem; object-fit:cover; max-height: 480px;"
-  />
+<img 
+  src={`${import.meta.env.BASE_URL}speaking.webp`}
+  alt="Angela Winegar speaking" 
+  style="width:100%; border-radius: var(--radius); display:block; margin-bottom: 1.5rem; object-fit:cover; max-height: 480px;"
+/>
 
   {talks.map((t) => (
     <a href={t.link} target="_blank" class="talk-card">

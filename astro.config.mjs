@@ -1,6 +1,8 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://agwincode.github.io',
-  base: '/my-site',
+  // Replace with your actual purchased domain
+  site: 'https://www.yournewdomain.com', 
+  // Change this from '/my-site' to just '/'
+  base: '/', 
 });
