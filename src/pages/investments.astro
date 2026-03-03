@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 
 const faviconUrl = (domain: string) =>
-  `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
+  `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
 
 const active = [
   {
@@ -14,6 +14,10 @@ const active = [
     logo: faviconUrl("anzen.com"),
     exit: false,
     color: "#4A6868",
+    coinvestors: [
+      { name: "Madrona", domain: "madrona.com" },
+      { name: "a16z", domain: "a16z.com" },
+    ],
   },
   {
     name: "Candor",
@@ -24,6 +28,10 @@ const active = [
     logo: faviconUrl("joincandor.com"),
     exit: false,
     color: "#7D3933",
+    coinvestors: [
+      { name: "Contrary", domain: "contrary.com" },
+      { name: "Afore Capital", domain: "afore.vc" },
+    ],
   },
   {
     name: "DealOps",
@@ -34,6 +42,10 @@ const active = [
     logo: faviconUrl("dealops.com"),
     exit: false,
     color: "#4A6868",
+    coinvestors: [
+      { name: "General Catalyst", domain: "generalcatalyst.com" },
+      { name: "Pear VC", domain: "pear.vc" },
+    ],
   },
   {
     name: "E9 Genomics",
@@ -45,6 +57,7 @@ const active = [
     textLogo: "E9",
     exit: false,
     color: "#7D3933",
+    coinvestors: [],
   },
   {
     name: "Fira Health",
@@ -55,6 +68,9 @@ const active = [
     logo: faviconUrl("firahealth.com"),
     exit: false,
     color: "#7D3933",
+    coinvestors: [
+      { name: "Bain Capital Ventures", domain: "baincapitalventures.com" },
+    ],
   },
   {
     name: "Gyde Health",
@@ -65,6 +81,10 @@ const active = [
     logo: faviconUrl("gydehealth.ai"),
     exit: false,
     color: "#4A6868",
+    coinvestors: [
+      { name: "Lightspeed", domain: "lsvp.com" },
+      { name: "Optum Ventures", domain: "optumventures.com" },
+    ],
   },
   {
     name: "Listen Labs",
@@ -75,6 +95,10 @@ const active = [
     logo: faviconUrl("listenlabs.ai"),
     exit: false,
     color: "#7D3933",
+    coinvestors: [
+      { name: "Sequoia", domain: "sequoiacap.com" },
+      { name: "Ribbit Capital", domain: "ribbitcap.com" },
+    ],
   },
   {
     name: "Neptune",
@@ -85,6 +109,7 @@ const active = [
     logo: faviconUrl("meetneptune.com"),
     exit: false,
     color: "#4A6868",
+    coinvestors: [],
   },
   {
     name: "Pocus",
@@ -95,6 +120,10 @@ const active = [
     logo: faviconUrl("pocus.com"),
     exit: false,
     color: "#7D3933",
+    coinvestors: [
+      { name: "Coatue", domain: "coatue.com" },
+      { name: "First Round Capital", domain: "firstround.com" },
+    ],
   },
   {
     name: "Sharp Performance",
@@ -105,6 +134,11 @@ const active = [
     logo: faviconUrl("sharpperformance.com"),
     exit: false,
     color: "#4A6868",
+    coinvestors: [
+      { name: "a16z", domain: "a16z.com" },
+      { name: "A*", domain: "eladgil.com" },
+      { name: "SV Angel", domain: "svangel.com" },
+    ],
   },
   {
     name: "Stell Engineering",
@@ -115,6 +149,9 @@ const active = [
     logo: faviconUrl("stell-engineering.com"),
     exit: false,
     color: "#7D3933",
+    coinvestors: [
+      { name: "Long Journey Ventures", domain: "longjourney.vc" },
+    ],
   },
   {
     name: "Sundays",
@@ -125,6 +162,7 @@ const active = [
     logo: faviconUrl("withsundays.com"),
     exit: false,
     color: "#4A6868",
+    coinvestors: [],
   },
   {
     name: "Swehl",
@@ -135,6 +173,10 @@ const active = [
     logo: faviconUrl("swehl.com"),
     exit: false,
     color: "#7D3933",
+    coinvestors: [
+      { name: "Cleo Capital", domain: "cleo.vc" },
+      { name: "XFactor Ventures", domain: "xfactor.vc" },
+    ],
   },
   {
     name: "VitVio",
@@ -145,6 +187,10 @@ const active = [
     logo: faviconUrl("vitvio.com"),
     exit: false,
     color: "#4A6868",
+    coinvestors: [
+      { name: "Bek Ventures", domain: "bekventures.com" },
+      { name: "LDV Capital", domain: "ldv.co" },
+    ],
   },
 ];
 
@@ -158,6 +204,12 @@ const exits = [
     logo: faviconUrl("safebase.io"),
     exit: true,
     color: "#2E2C29",
+    coinvestors: [
+      { name: "NEA", domain: "nea.com" },
+      { name: "Touring Capital", domain: "touringcapital.com" },
+      { name: "Y Combinator", domain: "ycombinator.com" },
+      { name: "Zoom Ventures", domain: "zoom.us" },
+    ],
   },
   {
     name: "Chiyo",
@@ -168,6 +220,10 @@ const exits = [
     logo: faviconUrl("wearechiyo.com"),
     exit: true,
     color: "#7D3933",
+    coinvestors: [
+      { name: "Bread & Butter Ventures", domain: "breadandbutter.vc" },
+      { name: "Flare Capital", domain: "flarecapital.com" },
+    ],
   },
 ];
 ---
@@ -206,8 +262,8 @@ const exits = [
       border-top: 3px solid var(--card-color, var(--color-border));
       border-radius: var(--radius);
       padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-rows: auto auto auto 1fr auto;
       text-decoration: none;
       color: var(--color-text);
       transition: transform 0.18s ease, box-shadow 0.18s ease;
@@ -307,7 +363,71 @@ const exits = [
       font-size: 0.825rem;
       color: var(--color-muted);
       line-height: 1.6;
-      flex: 1;
+    }
+
+    .coinvestors {
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .portfolio-card.is-exit .coinvestors {
+      border-top-color: rgba(255,255,255,0.1);
+    }
+
+    .coinvestors-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 0.45rem;
+    }
+
+    .portfolio-card.is-exit .coinvestors-label {
+      color: #9A9289;
+    }
+
+    .coinvestors-logos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      align-items: center;
+    }
+
+    .coinvestor-chip {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      padding: 0.2rem 0.45rem 0.2rem 0.3rem;
+    }
+
+    .portfolio-card.is-exit .coinvestor-chip {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.12);
+    }
+
+    .coinvestor-logo {
+      width: 14px;
+      height: 14px;
+      border-radius: 2px;
+      object-fit: cover;
+      image-rendering: -webkit-optimize-contrast;
+      flex-shrink: 0;
+    }
+
+    .coinvestor-name {
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: var(--color-text);
+      white-space: nowrap;
+    }
+
+    .portfolio-card.is-exit .coinvestor-name {
+      color: #C8BFB4;
     }
 
     .exits-divider {
@@ -359,6 +479,24 @@ const exits = [
         <div class="company-space">{co.space}</div>
         <div class="company-name">{co.name}</div>
         <p class="company-desc">{co.description}</p>
+        {co.coinvestors.length > 0 && (
+          <div class="coinvestors">
+            <div class="coinvestors-label">Co-investors</div>
+            <div class="coinvestors-logos">
+              {co.coinvestors.map((inv) => (
+                <span class="coinvestor-chip">
+                  <img
+                    class="coinvestor-logo"
+                    src={faviconUrl(inv.domain)}
+                    alt=""
+                    onerror="this.style.display='none'"
+                  />
+                  <span class="coinvestor-name">{inv.name}</span>
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
       </a>
     ))}
   </div>
@@ -383,6 +521,24 @@ const exits = [
         <div class="company-space">{co.space}</div>
         <div class="company-name">{co.name}</div>
         <p class="company-desc">{co.description}</p>
+        {co.coinvestors.length > 0 && (
+          <div class="coinvestors">
+            <div class="coinvestors-label">Co-investors</div>
+            <div class="coinvestors-logos">
+              {co.coinvestors.map((inv) => (
+                <span class="coinvestor-chip">
+                  <img
+                    class="coinvestor-logo"
+                    src={faviconUrl(inv.domain)}
+                    alt=""
+                    onerror="this.style.display='none'"
+                  />
+                  <span class="coinvestor-name">{inv.name}</span>
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
       </a>
     ))}
   </div>
