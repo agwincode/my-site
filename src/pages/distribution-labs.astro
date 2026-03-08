@@ -19,7 +19,7 @@
 		
 		<main>
 			<!-- HERO SECTION -->
-			<section class="hero-final">
+			<section class="hero-final reveal">
 				<div class="glow-wrap">
 					<div class="glow-periwinkle"></div>
 				</div>
@@ -34,13 +34,13 @@
 					</nav>
 
 					<div class="hero-center">
-						<p class="tagline-lab">DISTRIBUTION LABS // GTM_STRATEGY</p>
+						<p class="tagline-lab" data-value="DISTRIBUTION LABS // GTM_STRATEGY">DISTRIBUTION LABS // GTM_STRATEGY</p>
 						<h1 class="serif-h1-main">GTM for the high-leverage era. <span>AI-native growth ops.</span></h1>
 						<p class="subhead-final">
 							We are your GTM sparring partners. We help venture-backed teams build the engines that bridge the gap from product-market fit to enterprise-scale distribution.
 						</p>
 						<div class="v-links-final">
-							<a href="#offerings">View Sprints</a>
+							<a href="#offerings" class="btn-breathing">View Sprints</a>
 							<span class="v-divider">/</span>
 							<a href="#contact">Book Session</a>
 						</div>
@@ -49,10 +49,10 @@
 			</section>
 
 			<!-- LOGO STRIP -->
-			<section class="logo-strip">
+			<section class="logo-strip reveal">
 				<div class="container">
 					<p class="strip-label">FROM 8-FIGURE FOUNDATIONS TO 9-FIGURE MARKET LEADERS</p>
-					<div class="logo-grid">
+					<div class="logo-grid floating-logos">
 						<!-- Asana -->
 						<img src="https://www.vectorlogo.zone/logos/asana/asana-ar21.svg" alt="Asana" class="logo-img" />
 						<!-- Carta -->
@@ -67,7 +67,7 @@
 			</section>
 
 			<!-- AI PHILOSOPHY -->
-			<section class="philosophy-section">
+			<section class="philosophy-section reveal">
 				<div class="container">
 					<div class="philosophy-card">
 						<div class="philosophy-content">
@@ -82,7 +82,7 @@
 			</section>
 
 			<!-- SERIES-A TICKER -->
-			<div class="ticker-wrap">
+			<div class="ticker-wrap reveal">
 				<div class="ticker">
 					<span>ROBOTICS // ARTIFICIAL INTELLIGENCE // PUBLIC SAFETY // DEEP TECH // DEFENSE // ROBOTICS // ARTIFICIAL INTELLIGENCE // PUBLIC SAFETY // DEEP TECH // DEFENSE</span>
 				</div>
@@ -91,11 +91,11 @@
 			<!-- BENTO OFFERINGS -->
 			<section id="offerings" class="bento-section">
 				<div class="container">
-					<h2 class="section-title">Productized Sprints</h2>
+					<h2 class="section-title reveal">Productized Sprints</h2>
 					
 					<div class="bento-grid">
 						<!-- 1. POSITIONING -->
-						<div class="bento-card flagship anodized">
+						<div class="bento-card flagship anodized sheen">
 							<div class="card-content">
 								<span class="badge">CATEGORY LEADERSHIP</span>
 								<h3>Strategic Positioning & Narrative</h3>
@@ -104,7 +104,7 @@
 						</div>
 
 						<!-- 2. PLG -->
-						<div class="bento-card anodized">
+						<div class="bento-card anodized sheen">
 							<div class="card-content">
 								<span class="badge">REVENUE ACCELERATION</span>
 								<h3>PLG & Monetization Engine</h3>
@@ -113,7 +113,7 @@
 						</div>
 
 						<!-- 3. FRACTIONAL CMO -->
-						<div class="bento-card anodized">
+						<div class="bento-card anodized sheen">
 							<div class="card-content">
 								<span class="badge">OPERATIONAL SCALE</span>
 								<h3>Fractional CMO for AI-Native Orgs</h3>
@@ -122,16 +122,16 @@
 						</div>
 
 						<!-- 4. COMMS & AUTHORITY -->
-						<div class="bento-card advisory anodized">
+						<div class="bento-card advisory anodized sheen">
 							<div class="card-content">
 								<span class="badge">MARKET AUTHORITY</span>
 								<h3>Comms Strategy & Executive Authority</h3>
-								<p>We architect the founding story and strategic roadmap for executive authority. High-signal direction that wins category mindshare without the burden of day-to-day execution.</p>
+								<p>Architect the founding story and executive roadmap. High-signal direction that wins category mindshare, without the execution burden.</p>
 							</div>
 						</div>
 
 						<!-- 5. ORG DESIGN -->
-						<div class="bento-card anodized">
+						<div class="bento-card anodized sheen">
 							<div class="card-content">
 								<span class="badge">FUTURE OF WORK</span>
 								<h3>AI-Native Org Design</h3>
@@ -142,7 +142,7 @@
 				</div>
 			</section>
 
-			<section id="about" class="about-section">
+			<section id="about" class="about-section reveal">
 				<div class="container">
 					<div class="about-grid">
 						<div class="about-text">
@@ -157,7 +157,7 @@
 				</div>
 			</section>
 
-			<footer>
+			<footer class="reveal">
 				<div class="container">
 					<div class="footer-wrap">
 						<span class="logo">DISTRIBUTION LABS</span>
@@ -166,20 +166,76 @@
 				</div>
 			</footer>
 		</main>
+
+		<script>
+			// 1. Scroll Tracking for Parallax Grid
+			window.addEventListener('scroll', () => {
+				document.body.style.setProperty('--scroll', window.pageYOffset.toString());
+			});
+
+			// 2. Intersection Observer for Reveal Animations
+			const observerOptions = {
+				threshold: 0.1,
+				rootMargin: '0px 0px -50px 0px'
+			};
+
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('active');
+						if (entry.target.classList.contains('bento-grid')) {
+							const cards = entry.target.querySelectorAll('.bento-card');
+							cards.forEach((card, index) => {
+								setTimeout(() => card.classList.add('active'), index * 150);
+							});
+						}
+					}
+				});
+			}, observerOptions);
+
+			document.querySelectorAll('.reveal, .bento-grid').forEach(el => observer.observe(el));
+
+			// 3. Tagline Decipher Animation
+			const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789//_";
+			document.querySelectorAll('.tagline-lab').forEach(tag => {
+				let interval = null;
+				tag.onmouseover = event => {  
+					let iteration = 0;
+					clearInterval(interval);
+					interval = setInterval(() => {
+						event.target.innerText = event.target.innerText
+							.split("")
+							.map((letter, index) => {
+								if(index < iteration) return event.target.dataset.value[index];
+								return letters[Math.floor(Math.random() * 39)]
+							})
+							.join("");
+						if(iteration >= event.target.dataset.value.length) clearInterval(interval);
+						iteration += 1 / 3;
+					}, 30);
+				};
+			});
+		</script>
 	</body>
 </html>
 
 <style is:global>
 	:root {
-		--bg-charcoal: #0a0a0a;
-		--fg-white: #f5f5f5;
-		--fg-muted: #a1a1a1;
-		--p-orange: #e66b3d;
-		--p-lavender: #b4b8f0;
-		--p-blue: #4d61ff;
-		--border-dim: rgba(255, 255, 255, 0.1);
+		--bg-charcoal: #12100E; /* Warm Black */
+		--fg-white: #F5F5F0;    /* Off White */
+		--fg-muted: #94918C;    /* Muted Gray */
+		--p-orange: #E66B3D;
+		--p-pink: #E6B3C7;
+		--p-gray: #94918C;
+		--p-brown: #633324;
+		--p-blue: #4D61FF;
+		--p-sky: #B4B8F0;
+		--p-olive: #8A8E3D;
+		--p-green: #2D4D35;
+		--border-dim: rgba(245, 245, 240, 0.1);
 		--font-serif: 'Playfair Display', serif;
 		--font-sans: 'Inter', sans-serif;
+		--scroll: 0;
 	}
 
 	.distro-body {
@@ -207,13 +263,35 @@
 		background-image: url('https://grainy-gradients.vercel.app/noise.svg');
 	}
 
-	/* Grid Pattern */
-	.distro-body {
+	/* Grid Pattern with Parallax */
+	.distro-body::before {
+		content: "";
+		position: fixed;
+		top: -50%;
+		left: -50%;
+		width: 200%;
+		height: 200%;
 		background-image: 
 			linear-gradient(to right, var(--border-dim) 1px, transparent 1px),
 			linear-gradient(to bottom, var(--border-dim) 1px, transparent 1px);
 		background-size: 60px 60px;
-		background-attachment: scroll;
+		z-index: -1;
+		pointer-events: none;
+		transform: translateY(calc(var(--scroll) * -0.2px));
+		opacity: 0.6;
+	}
+
+	/* Fade out grid at bottom */
+	.distro-body::after {
+		content: "";
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 40vh;
+		background: linear-gradient(to top, var(--bg-charcoal), transparent);
+		z-index: -1;
+		pointer-events: none;
 	}
 
 	.container {
@@ -224,6 +302,17 @@
 	}
 
 	h1, h2, h3 { font-family: var(--font-serif); font-weight: 400; }
+
+	/* Animations */
+	.reveal {
+		opacity: 0;
+		transform: translateY(30px);
+		transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+	}
+	.reveal.active {
+		opacity: 1 !important;
+		transform: translateY(0) !important;
+	}
 
 	/* Final Hero Styling */
 	.hero-final {
@@ -247,7 +336,7 @@
 	.glow-periwinkle {
 		width: 60vw;
 		height: 60vw;
-		background: radial-gradient(circle, var(--p-lavender) 0%, transparent 70%);
+		background: radial-gradient(circle, var(--p-sky) 0%, transparent 70%);
 		opacity: 0.08;
 		filter: blur(100px);
 	}
@@ -276,9 +365,23 @@
 		font-size: 0.8rem;
 		letter-spacing: 0.1rem;
 		text-transform: uppercase;
-		transition: color 0.3s;
+		transition: all 0.3s;
+		position: relative;
+		padding-bottom: 4px;
+	}
+	.nav-links-minimal a::after {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 0;
+		height: 1px;
+		background: var(--p-orange);
+		transition: width 0.3s;
 	}
 	.nav-links-minimal a:hover { color: var(--fg-white); }
+	.nav-links-minimal a:hover::after { width: 100%; }
+
 	.btn-cta-small {
 		background: transparent;
 		color: var(--fg-white);
@@ -288,9 +391,14 @@
 		text-transform: uppercase;
 		letter-spacing: 0.1rem;
 		cursor: pointer;
-		transition: border-color 0.3s;
+		transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 	}
-	.btn-cta-small:hover { border-color: var(--p-lavender); }
+	.btn-cta-small:hover { 
+		border-color: var(--p-sky); 
+		transform: translateY(-2px);
+		box-shadow: 0 0 20px rgba(180, 184, 240, 0.2);
+		background: rgba(180, 184, 240, 0.05);
+	}
 
 	.hero-center {
 		flex: 1;
@@ -309,6 +417,7 @@
 		color: var(--p-orange);
 		margin-bottom: 2.5rem;
 		font-weight: 600;
+		cursor: default;
 	}
 	.serif-h1-main {
 		font-family: var(--font-serif);
@@ -323,7 +432,7 @@
 		font-family: var(--font-sans);
 		font-weight: 700;
 		font-size: 3.5rem;
-		color: var(--p-lavender);
+		color: var(--p-sky);
 		letter-spacing: -0.05rem;
 		margin-top: 0.5rem;
 	}
@@ -347,9 +456,14 @@
 		font-size: 1.1rem;
 		border-bottom: 1px solid rgba(180, 184, 240, 0.3);
 		padding-bottom: 0.2rem;
-		transition: border-color 0.3s;
+		transition: all 0.3s;
+		display: inline-block;
 	}
-	.v-links-final a:hover { border-color: var(--p-lavender); }
+	.v-links-final a:hover { 
+		border-color: var(--p-sky); 
+		color: var(--p-sky);
+		transform: translateX(5px);
+	}
 	.v-divider { color: var(--border-dim); font-size: 1.2rem; }
 
 	/* Logo Strip */
@@ -396,6 +510,16 @@
 		margin: 0 auto;
 	}
 
+	/* Floating Logos */
+	@keyframes float {
+		0%, 100% { transform: translateY(0); }
+		50% { transform: translateY(-10px); }
+	}
+	.floating-logos .logo-img { animation: float 6s ease-in-out infinite; }
+	.floating-logos .logo-img:nth-child(2) { animation-delay: 1s; }
+	.floating-logos .logo-img:nth-child(3) { animation-delay: 2s; }
+	.floating-logos .logo-img:nth-child(4) { animation-delay: 3s; }
+
 	/* Philosophy Section */
 	.philosophy-section { padding: 8rem 0 4rem; }
 	.philosophy-card {
@@ -416,19 +540,20 @@
 	.ticker-wrap {
 		width: 100%;
 		overflow: hidden;
-		background: rgba(255, 255, 255, 0.03);
-		border-top: 1px solid var(--border-dim);
-		border-bottom: 1px solid var(--border-dim);
+		background: rgba(138, 142, 61, 0.03);
+		border-top: 1px solid rgba(138, 142, 61, 0.1);
+		border-bottom: 1px solid rgba(138, 142, 61, 0.1);
 		padding: 1rem 0;
-		margin: 4rem 0;
+		margin: 2rem 0;
 	}
 	.ticker {
 		white-space: nowrap;
-		animation: ticker 30s linear infinite;
-		font-size: 0.7rem;
-		letter-spacing: 0.4rem;
-		font-weight: 600;
-		color: var(--fg-muted);
+		animation: ticker 35s linear infinite;
+		font-size: 0.85rem;
+		letter-spacing: 0.5rem;
+		font-weight: 700;
+		color: var(--p-olive);
+		text-shadow: 0 0 10px rgba(138, 142, 61, 0.2);
 	}
 	@keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
@@ -450,7 +575,10 @@
 		position: relative;
 		overflow: hidden;
 		transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+		opacity: 0;
+		transform: translateY(20px);
 	}
+	.bento-card.active { opacity: 1 !important; transform: translateY(0) !important; }
 	.flagship {
 		grid-column: span 2;
 		background: linear-gradient(135deg, rgba(45, 77, 53, 0.2) 0%, rgba(10, 10, 10, 1) 100%);
@@ -460,6 +588,29 @@
 		background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(10, 10, 10, 1) 100%);
 		transform: translateY(-5px);
 	}
+
+	/* Sheen Animation */
+	@keyframes sheen {
+		0% { transform: translateX(-100%) rotate(45deg); }
+		100% { transform: translateX(200%) rotate(45deg); }
+	}
+	.sheen::after {
+		content: "";
+		position: absolute;
+		top: -50%; left: -50%; width: 200%; height: 200%;
+		background: linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent);
+		transform: rotate(45deg);
+		animation: sheen 10s infinite;
+		pointer-events: none;
+	}
+
+	/* Button Breathing */
+	@keyframes breathe {
+		0%, 100% { box-shadow: 0 0 10px rgba(180, 184, 240, 0.1); }
+		50% { box-shadow: 0 0 25px rgba(180, 184, 240, 0.3); }
+	}
+	.btn-breathing { animation: breathe 4s ease-in-out infinite; }
+
 	.badge {
 		font-size: 0.65rem;
 		letter-spacing: 0.1rem;
@@ -478,7 +629,7 @@
 	.about-text h2 { font-size: 3rem; margin-bottom: 2rem; }
 	.about-text p { font-size: 1.2rem; color: var(--fg-muted); line-height: 1.6; }
 	.about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-	.stat-item span { font-family: var(--font-serif); font-size: 3rem; color: var(--p-lavender); display: block; }
+	.stat-item span { font-family: var(--font-serif); font-size: 3rem; color: var(--p-sky); display: block; }
 	.stat-item p { color: var(--fg-muted); font-size: 0.9rem; }
 
 	/* Footer */
