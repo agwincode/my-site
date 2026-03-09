@@ -1,0 +1,107 @@
+---
+---
+
+<section class="logo-strip reveal">
+	<div class="container">
+		<p class="strip-label">FROM 8-FIGURE FOUNDATIONS TO 9-FIGURE MARKET LEADERS</p>
+		<div class="logo-grid floating-logos">
+			<div class="logo-item">
+				<img src="https://www.vectorlogo.zone/logos/asana/asana-ar21.svg" alt="Asana" class="logo-img" />
+			</div>
+			<div class="logo-item">
+				<img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Carta-logo.svg" alt="Carta" class="logo-img" />
+			</div>
+			<div class="logo-item">
+				<img src="https://www.vectorlogo.zone/logos/dropbox/dropbox-ar21.svg" alt="Dropbox" class="logo-img" />
+			</div>
+			<div class="logo-item">
+				<img src="https://cdn.prod.website-files.com/684704669d08b247ce01fc71/696aa54f553448ee6807fc3f_9b550bd9d3ed8ecb05d19aca8fe5eca1_PrimaryLogoLight.png" alt="Invisible Technologies" class="logo-img" />
+			</div>
+			<div class="logo-item">
+				<div class="logo-moonvalley">Moonvalley</div>
+			</div>
+		</div>
+		<p class="strip-subtext">We've repeatedly built the growth engines that define categories. Now, we're building yours.</p>
+	</div>
+</section>
+
+<style>
+	.logo-strip {
+		padding: 6rem 0;
+		background: rgba(255, 255, 255, 0.02);
+		border-top: 1px solid var(--border-dim);
+		border-bottom: 1px solid var(--border-dim);
+	}
+	.strip-label {
+		font-size: 0.75rem;
+		letter-spacing: 0.2rem;
+		color: var(--p-orange);
+		text-align: center;
+		margin-bottom: 4rem;
+		font-weight: 600;
+	}
+	.logo-grid {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		opacity: 0.9;
+		gap: 2rem;
+		margin-bottom: 4rem;
+		flex-wrap: wrap;
+	}
+	.logo-item {
+		flex: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-width: 150px;
+	}
+	.logo-img {
+		height: 32px;
+		width: auto;
+		max-width: 160px;
+		filter: brightness(0) invert(1);
+		transition: transform 0.3s;
+		object-fit: contain;
+	}
+	.logo-img:hover { transform: scale(1.05); }
+	
+	.logo-moonvalley {
+		font-family: var(--font-sans);
+		font-weight: 700;
+		font-size: 1.6rem;
+		letter-spacing: -0.05rem;
+		color: var(--fg-white);
+		animation: float 6s ease-in-out infinite;
+		animation-delay: 4s;
+	}
+	.strip-subtext {
+		text-align: center;
+		font-family: var(--font-serif);
+		font-size: 1.1rem;
+		color: var(--fg-muted);
+		font-style: italic;
+		max-width: 600px;
+		margin: 0 auto;
+	}
+
+	/* Floating Logos */
+	@keyframes float {
+		0%, 100% { transform: translateY(0); }
+		50% { transform: translateY(-20px); }
+	}
+	.floating-logos .logo-img { animation: float 6s ease-in-out infinite; }
+	.floating-logos .logo-img:nth-child(2) { animation-delay: 1s; }
+	.floating-logos .logo-img:nth-child(3) { animation-delay: 2s; }
+	.floating-logos .logo-img:nth-child(4) { animation-delay: 3s; }
+
+	@media (max-width: 768px) {
+		.logo-strip { padding: 4rem 0; }
+		.logo-grid { gap: 1.5rem; justify-content: center; margin-bottom: 2rem; }
+		.logo-item { min-width: 100px; flex: 0 1 auto; }
+		.logo-img { height: 24px; max-width: 120px; }
+		.logo-moonvalley { font-size: 1.25rem; }
+		.strip-label { margin-bottom: 3rem; padding: 0 1rem; }
+		.strip-subtext { padding: 0 1.5rem; font-size: 1rem; line-height: 1.6; }
+	}
+</style>

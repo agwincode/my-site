@@ -1,0 +1,27 @@
+---
+---
+
+<footer class="reveal">
+	<div class="container">
+		<div class="footer-wrap">
+			<span class="logo">DISTRIBUTION LABS</span>
+			<p>&copy; {new Date().getFullYear()} Distribution Labs. All rights reserved.</p>
+		</div>
+	</div>
+</footer>
+
+<style>
+	footer { padding: 4rem 0; border-top: 1px solid var(--border-dim); }
+	.footer-wrap { display: flex; justify-content: space-between; align-items: center; color: var(--fg-muted); font-size: 0.8rem; }
+	.logo {
+		font-family: var(--font-sans);
+		font-weight: 600;
+		letter-spacing: 0.2rem;
+		font-size: 0.9rem;
+		color: var(--fg-white);
+	}
+
+	@media (max-width: 640px) {
+		.footer-wrap { flex-direction: column; gap: 1rem; text-align: center; }
+	}
+</style>

@@ -1,0 +1,176 @@
+---
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { 
+	title, 
+	description = "Distribution Labs - High-Stakes GTM Strategy for Venture-Backed Teams" 
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+		<title>{title}</title>
+	</head>
+	<body class="distro-body">
+		<div class="grain"></div>
+		<slot />
+
+		<script>
+			// Scroll Tracking for Parallax Grid
+			window.addEventListener('scroll', () => {
+				document.body.style.setProperty('--scroll', window.pageYOffset.toString());
+			});
+
+			// Intersection Observer for Reveal Animations
+			const observerOptions = {
+				threshold: 0.1,
+				rootMargin: '0px 0px -50px 0px'
+			};
+
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('active');
+						if (entry.target.classList.contains('bento-grid')) {
+							const cards = entry.target.querySelectorAll('.bento-card');
+							cards.forEach((card, index) => {
+								setTimeout(() => card.classList.add('active'), index * 150);
+							});
+						}
+					}
+				});
+			}, observerOptions);
+
+			document.querySelectorAll('.reveal, .bento-grid').forEach(el => observer.observe(el));
+		</script>
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--bg-charcoal: #12100E; /* Warm Black */
+		--fg-white: #F5F5F0;    /* Off White */
+		--fg-muted: #94918C;    /* Muted Gray */
+		--p-orange: #E66B3D;
+		--p-pink: #E6B3C7;
+		--p-gray: #94918C;
+		--p-brown: #633324;
+		--p-blue: #4D61FF;
+		--p-sky: #B4B8F0;
+		--p-olive: #8A8E3D;
+		--p-green: #2D4D35;
+		--border-dim: rgba(245, 245, 240, 0.1);
+		--font-serif: 'Optima', 'Candara', 'Segoe UI', source-sans-pro, sans-serif;
+		--font-sans: 'Helvetica Now Condensed', 'Helvetica Neue Condensed', 'Arial Narrow', sans-serif;
+		--scroll: 0;
+	}
+
+	.distro-body {
+		background: var(--bg-charcoal) !important;
+		color: var(--fg-white) !important;
+		font-family: var(--font-sans) !important;
+		margin: 0;
+		padding: 0;
+		overflow-x: hidden;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	.distro-body * { box-sizing: border-box; }
+
+	/* Grain Texture */
+	.grain {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		z-index: 99;
+		opacity: 0.04;
+		background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+	}
+
+	/* Grid Pattern with Parallax */
+	.distro-body::before {
+		content: "";
+		position: fixed;
+		top: -50%;
+		left: -50%;
+		width: 200%;
+		height: 200%;
+		background-image: 
+			linear-gradient(to right, var(--border-dim) 1px, transparent 1px),
+			linear-gradient(to bottom, var(--border-dim) 1px, transparent 1px);
+		background-size: 60px 60px;
+		z-index: -1;
+		pointer-events: none;
+		transform: translateY(calc(var(--scroll) * -0.2px));
+		opacity: 0.6;
+	}
+
+	/* Fade out grid at bottom */
+	.distro-body::after {
+		content: "";
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 40vh;
+		background: linear-gradient(to top, var(--bg-charcoal), transparent);
+		z-index: -1;
+		pointer-events: none;
+	}
+
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 2rem;
+		position: relative;
+	}
+
+	h1, h2, h3 { font-family: var(--font-serif); font-weight: 400; }
+
+	/* Global Reveal Animation Classes */
+	.reveal {
+		opacity: 0;
+		transform: translateY(30px);
+		transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+	}
+	.reveal.active {
+		opacity: 1 !important;
+		transform: translateY(0) !important;
+	}
+
+	.badge {
+		font-size: 0.65rem;
+		letter-spacing: 0.1rem;
+		color: var(--p-orange);
+		border: 1px solid rgba(230, 107, 61, 0.3);
+		padding: 0.3rem 0.6rem;
+		display: inline-block;
+		margin-bottom: 1.5rem;
+		font-weight: 900;
+	}
+
+	@media (max-width: 968px) {
+		.container { padding: 0 1.5rem; }
+	}
+
+	@media (max-width: 768px) {
+		:root {
+			--section-padding: 4rem;
+		}
+		.container { padding: 0 1.25rem; }
+	}
+</style>
