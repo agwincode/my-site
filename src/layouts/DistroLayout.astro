@@ -25,14 +25,6 @@ const {
 	<body class="distro-body">
 		<div class="grain"></div>
 		
-		<!-- Background Video -->
-		<div class="video-background">
-			<video autoplay muted loop playsinline>
-				<source src="/bg-video.mp4" type="video/mp4">
-			</video>
-			<div class="video-overlay"></div>
-		</div>
-
 		<slot />
 
 		<script>
@@ -125,41 +117,6 @@ const {
 		pointer-events: none;
 		transform: translateY(calc(var(--scroll) * -0.2px));
 		opacity: 0.6;
-	}
-
-	/* Video Background Styles */
-	.video-background {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		z-index: -2;
-		overflow: hidden;
-		background: var(--bg-charcoal);
-	}
-
-	.video-background video {
-		min-width: 100%;
-		min-height: 100%;
-		width: auto;
-		height: auto;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		object-fit: cover;
-		opacity: 0.4; /* More prominent */
-		filter: grayscale(60%) contrast(1.15); /* More depth */
-	}
-
-	.video-overlay {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background: linear-gradient(to bottom, rgba(18, 16, 14, 0.25), var(--bg-charcoal));
 	}
 
 	/* Fade out grid at bottom */
