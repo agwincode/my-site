@@ -5,7 +5,16 @@
 	<div class="glow-wrap">
 		<div class="glow-periwinkle"></div>
 	</div>
-	<div class="container">
+
+	<!-- Background Video (Pinned Right) -->
+	<div class="hero-video-bg">
+		<video autoplay muted loop playsinline class="hero-video">
+			<source src="/bg-video.mp4" type="video/mp4">
+		</video>
+		<div class="hero-video-fade"></div>
+	</div>
+
+	<div class="container hero-container">
 		<nav class="nav-minimal">
 			<span class="logo">DISTRIBUTION LABS</span>
 			<div class="nav-links-minimal">
@@ -15,16 +24,18 @@
 			</div>
 		</nav>
 
-		<div class="hero-center">
-			<p class="tagline-lab" data-value="DISTRIBUTION LABS // GTM_STRATEGY">DISTRIBUTION LABS // GTM_STRATEGY</p>
-			<h1 class="serif-h1-main">GTM for the high-leverage era. <span>AI-native growth ops.</span></h1>
-			<p class="subhead-final">
-				We are your GTM sparring partners. We help venture-backed teams build the engines that bridge the gap from product-market fit to enterprise-scale distribution.
-			</p>
-			<div class="v-links-final">
-				<a href="#offerings" class="btn-breathing">View Sprints</a>
-				<span class="v-divider">/</span>
-				<a href="#contact">Book Session</a>
+		<div class="hero-split">
+			<div class="hero-content">
+				<p class="tagline-lab" data-value="DISTRIBUTION LABS // GTM_STRATEGY">DISTRIBUTION LABS // GTM_STRATEGY</p>
+				<h1 class="serif-h1-main">The future belongs to storytellers. <span>Your growth insurance policy.</span></h1>
+				<p class="subhead-final">
+					We are your GTM sparring partners. We help venture-backed teams build the engines that bridge the gap from product-market fit to enterprise-scale distribution.
+				</p>
+				<div class="v-links-final">
+					<a href="#offerings" class="btn-breathing">View Sprints</a>
+					<span class="v-divider">/</span>
+					<a href="#contact">Book Session</a>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -57,17 +68,58 @@
 <style>
 	/* Final Hero Styling */
 	.hero-final {
-		min-height: 90vh;
+		min-height: 95vh;
 		display: flex;
 		flex-direction: column;
 		position: relative;
 		overflow: hidden;
 		padding-bottom: 4rem;
 	}
+
+	.hero-container {
+		max-width: 1400px !important;
+		margin-left: 0 !important;
+		padding-left: 4rem !important;
+	}
+
+	/* Video Background (Right Aligned) */
+	.hero-video-bg {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 70vw; /* Spans 70% of the width from the right */
+		height: 100%;
+		z-index: -2; /* Behind the grid (z-index: -1) */
+		pointer-events: none;
+	}
+
+	.hero-video {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		opacity: 0.55;
+		filter: grayscale(40%) contrast(1.1);
+	}
+
+	/* Mask to fade video into the dark background on the left */
+	.hero-video-fade {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(to right, 
+			var(--bg-charcoal) 0%, 
+			rgba(18, 16, 14, 0.8) 20%, 
+			transparent 50%, 
+			transparent 80%, 
+			var(--bg-charcoal) 100%);
+	}
+
 	.glow-wrap {
 		position: absolute;
 		top: -20%;
-		left: 50%;
+		left: 20%;
 		transform: translateX(-50%);
 		width: 100%;
 		height: 100%;
@@ -87,6 +139,8 @@
 		justify-content: space-between;
 		align-items: center;
 		padding: 2.5rem 0;
+		position: relative;
+		z-index: 10;
 	}
 	.logo {
 		font-family: var(--font-sans);
@@ -141,17 +195,21 @@
 		background: rgba(180, 184, 240, 0.05);
 	}
 
-	.hero-center {
-		flex: 1;
+	/* Split Content Alignment */
+	.hero-split {
 		display: flex;
-		flex-direction: column;
 		align-items: center;
-		justify-content: center;
-		text-align: center;
-		max-width: 900px;
-		margin: 0 auto;
-		padding-top: 2rem;
+		flex: 1;
+		padding-top: 4rem;
 	}
+
+	.hero-content {
+		text-align: left;
+		position: relative;
+		z-index: 5;
+		max-width: 800px;
+	}
+
 	.tagline-lab {
 		font-size: 0.65rem;
 		letter-spacing: 0.4rem;
@@ -163,26 +221,27 @@
 	.serif-h1-main {
 		font-family: var(--font-serif);
 		font-weight: 400;
-		font-size: 5rem;
-		line-height: 1.1;
+		font-size: 4.5rem;
+		line-height: 1.05;
 		margin-bottom: 2.5rem;
 		letter-spacing: -0.02rem;
+		max-width: 700px;
 	}
 	.serif-h1-main span {
 		display: block;
 		font-family: var(--font-sans);
 		font-weight: 700;
-		font-size: 3.5rem;
+		font-size: 3rem;
 		color: var(--p-sky);
 		letter-spacing: -0.05rem;
 		margin-top: 0.5rem;
 	}
 	.subhead-final {
 		font-family: var(--font-serif);
-		font-size: 1.4rem;
+		font-size: 1.3rem;
 		color: var(--fg-muted);
 		line-height: 1.6;
-		max-width: 700px;
+		max-width: 540px;
 		margin-bottom: 3.5rem;
 		font-style: italic;
 	}
@@ -214,26 +273,33 @@
 	}
 	.btn-breathing { animation: breathe 4s ease-in-out infinite; }
 
-	@media (max-width: 968px) {
+	@media (max-width: 1100px) {
 		.serif-h1-main { font-size: 3.5rem; }
-		.serif-h1-main span { font-size: 2.25rem; }
-		.nav-links-minimal { gap: 1.5rem; }
+		.serif-h1-main span { font-size: 2.5rem; }
+		.hero-video-bg { width: 80vw; }
+		.hero-container { padding-left: 2rem !important; }
+	}
+
+	@media (max-width: 968px) {
+		.hero-final { min-height: 80vh; }
+		.hero-content { text-align: center; margin: 0 auto; }
+		.subhead-final { margin: 0 auto 3.5rem; }
+		.v-links-final { justify-content: center; }
+		.hero-video-bg { width: 100vw; opacity: 0.3; }
+		.serif-h1-main { margin: 0 auto 2.5rem; }
+		.hero-container { padding-left: 1.5rem !important; }
 	}
 
 	@media (max-width: 768px) {
-		.hero-final { min-height: 80vh; padding-bottom: 2rem; }
+		.hero-final { padding-bottom: 2rem; }
 		.nav-minimal { flex-direction: column; gap: 1.5rem; padding: 2rem 0; }
 		.nav-links-minimal { gap: 1.25rem; }
-		.nav-links-minimal a { font-size: 0.7rem; }
 		
-		.hero-center { padding-top: 3rem; }
-		.tagline-lab { font-size: 0.55rem; letter-spacing: 0.25rem; margin-bottom: 1.5rem; }
-		.serif-h1-main { font-size: 2.5rem; margin-bottom: 2rem; }
-		.serif-h1-main span { font-size: 1.75rem; margin-top: 0.25rem; }
-		.subhead-final { font-size: 1.1rem; margin-bottom: 2.5rem; padding: 0 1rem; }
+		.serif-h1-main { font-size: 2.75rem; }
+		.serif-h1-main span { font-size: 2rem; }
 		
-		.v-links-final { flex-direction: column; gap: 1rem; }
+		.v-links-final { flex-direction: column; gap: 1.25rem; }
 		.v-divider { display: none; }
-		.v-links-final a { font-size: 1rem; width: 100%; text-align: center; }
+		.v-links-final a { width: 100%; text-align: center; }
 	}
 </style>

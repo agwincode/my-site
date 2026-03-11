@@ -18,7 +18,7 @@
 				<img src="https://cdn.prod.website-files.com/684704669d08b247ce01fc71/696aa54f553448ee6807fc3f_9b550bd9d3ed8ecb05d19aca8fe5eca1_PrimaryLogoLight.png" alt="Invisible Technologies" class="logo-img" />
 			</div>
 			<div class="logo-item">
-				<div class="logo-moonvalley">Moonvalley</div>
+				<img src="/logos/moonvalley.svg" alt="Moonvalley" class="logo-img" />
 			</div>
 		</div>
 		<p class="strip-subtext">We've repeatedly built the growth engines that define categories. Now, we're building yours.</p>
@@ -42,43 +42,36 @@
 	}
 	.logo-grid {
 		display: flex;
-		justify-content: space-between;
+		justify-content: center;
 		align-items: center;
 		opacity: 0.9;
-		gap: 2rem;
+		gap: 4rem; /* Increased gap to prevent collision */
 		margin-bottom: 4rem;
 		flex-wrap: wrap;
 	}
 	.logo-item {
-		flex: 1;
+		flex: 0 1 auto; /* Don't force them to fill, let them sit naturally */
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		min-width: 150px;
+		min-width: 180px;
 	}
 	.logo-img {
 		width: auto;
+		max-width: 100%; /* Ensure they never exceed the container */
 		filter: brightness(0) invert(1);
 		transition: transform 0.3s;
 		object-fit: contain;
 	}
-	/* Optical Scaling: Base 32px, Asana/Dropbox/Invisible +20% (~38px) */
-	.logo-item:nth-child(1) .logo-img { height: 38px; } /* Asana */
-	.logo-item:nth-child(2) .logo-img { height: 32px; } /* Carta */
-	.logo-item:nth-child(3) .logo-img { height: 38px; } /* Dropbox */
-	.logo-item:nth-child(4) .logo-img { height: 38px; } /* Invisible */
+	/* Optical Scaling: Balanced for the new layout */
+	.logo-item:nth-child(1) .logo-img { height: 48px; } /* Asana */
+	.logo-item:nth-child(2) .logo-img { height: 40px; } /* Carta */
+	.logo-item:nth-child(3) .logo-img { height: 48px; } /* Dropbox */
+	.logo-item:nth-child(4) .logo-img { height: 60px; } /* Invisible (Largest) */
+	.logo-item:nth-child(5) .logo-img { height: 20px; } /* Moonvalley (Wide logo - height must be low) */
 
 	.logo-img:hover { transform: scale(1.05); }
 	
-	.logo-moonvalley {
-		font-family: var(--font-sans);
-		font-weight: 700;
-		font-size: 1.6rem;
-		letter-spacing: -0.05rem;
-		color: var(--fg-white);
-		animation: float 6s ease-in-out infinite;
-		animation-delay: 4s;
-	}
 	.strip-subtext {
 		text-align: center;
 		font-family: var(--font-serif);
@@ -99,17 +92,18 @@
 	.floating-logos .logo-item:nth-child(2) .logo-img { animation-delay: 1s; }
 	.floating-logos .logo-item:nth-child(3) .logo-img { animation-delay: 2s; }
 	.floating-logos .logo-item:nth-child(4) .logo-img { animation-delay: 3s; }
+	.floating-logos .logo-item:nth-child(5) .logo-img { animation-delay: 4s; }
 
 	@media (max-width: 768px) {
 		.logo-strip { padding: 4rem 0; }
-		.logo-grid { gap: 1.5rem; justify-content: center; margin-bottom: 2rem; }
-		.logo-item { min-width: 100px; flex: 0 1 auto; }
-		/* Mobile Scaling: Base 24px, Asana/Dropbox/Invisible +20% (~29px) */
-		.logo-item:nth-child(1) .logo-img { height: 29px; }
-		.logo-item:nth-child(2) .logo-img { height: 24px; }
-		.logo-item:nth-child(3) .logo-img { height: 29px; }
-		.logo-item:nth-child(4) .logo-img { height: 29px; }
-		.logo-moonvalley { font-size: 1.25rem; }
+		.logo-grid { gap: 2rem; justify-content: center; margin-bottom: 2rem; }
+		.logo-item { min-width: 140px; flex: 0 1 auto; }
+		/* Mobile Scaling: Balanced */
+		.logo-item:nth-child(1) .logo-img { height: 32px; }
+		.logo-item:nth-child(2) .logo-img { height: 28px; }
+		.logo-item:nth-child(3) .logo-img { height: 32px; }
+		.logo-item:nth-child(4) .logo-img { height: 44px; }
+		.logo-item:nth-child(5) .logo-img { height: 14px; }
 		.strip-label { margin-bottom: 3rem; padding: 0 1rem; }
 		.strip-subtext { padding: 0 1.5rem; font-size: 1rem; line-height: 1.6; }
 	}
