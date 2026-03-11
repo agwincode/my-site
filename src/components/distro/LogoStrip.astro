@@ -57,13 +57,17 @@
 		min-width: 150px;
 	}
 	.logo-img {
-		height: 32px;
 		width: auto;
-		max-width: 160px;
 		filter: brightness(0) invert(1);
 		transition: transform 0.3s;
 		object-fit: contain;
 	}
+	/* Optical Scaling: Base 32px, Asana/Dropbox/Invisible +20% (~38px) */
+	.logo-item:nth-child(1) .logo-img { height: 38px; } /* Asana */
+	.logo-item:nth-child(2) .logo-img { height: 32px; } /* Carta */
+	.logo-item:nth-child(3) .logo-img { height: 38px; } /* Dropbox */
+	.logo-item:nth-child(4) .logo-img { height: 38px; } /* Invisible */
+
 	.logo-img:hover { transform: scale(1.05); }
 	
 	.logo-moonvalley {
@@ -99,7 +103,11 @@
 		.logo-strip { padding: 4rem 0; }
 		.logo-grid { gap: 1.5rem; justify-content: center; margin-bottom: 2rem; }
 		.logo-item { min-width: 100px; flex: 0 1 auto; }
-		.logo-img { height: 24px; max-width: 120px; }
+		/* Mobile Scaling: Base 24px, Asana/Dropbox/Invisible +20% (~29px) */
+		.logo-item:nth-child(1) .logo-img { height: 29px; }
+		.logo-item:nth-child(2) .logo-img { height: 24px; }
+		.logo-item:nth-child(3) .logo-img { height: 29px; }
+		.logo-item:nth-child(4) .logo-img { height: 29px; }
 		.logo-moonvalley { font-size: 1.25rem; }
 		.strip-label { margin-bottom: 3rem; padding: 0 1rem; }
 		.strip-subtext { padding: 0 1.5rem; font-size: 1rem; line-height: 1.6; }
