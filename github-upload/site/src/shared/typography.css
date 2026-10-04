@@ -1,0 +1,42 @@
+/* Shared editorial typography. Company wordmarks retain their brand styling. */
+:root{--font-body:Arial,Helvetica,sans-serif;--font-display:Georgia,"Times New Roman",serif;--type-page:clamp(42px,5.4vw,72px);--type-section:clamp(28px,3vw,38px);--type-card:clamp(22px,2.1vw,28px);--type-body:16px;--type-label:12px}
+body{font-family:var(--font-body)}
+.navigation,.navigation .nav-items{font:14px/1.4 var(--font-body)}
+.navigation .brand{font:italic 24px/1.2 var(--font-display)}
+body.page-investments .section-heading h1,body.page-ideas .page-heading h1{font:400 var(--type-page)/1.08 var(--font-display);letter-spacing:-.035em;margin:0;max-width:960px;text-wrap:balance}
+body.page-ideas .page-heading h1{margin-bottom:64px}
+body.page-investments .section-heading{gap:18px;margin-bottom:64px}
+body.page-investments .section-heading .eyebrow{font:400 var(--type-label)/1.5 var(--font-body);letter-spacing:.09em;text-transform:uppercase}
+body.page-investments .page-main{padding-top:0}
+body.page-investments .page-main .content,body.page-ideas main{max-width:1360px;margin-inline:auto;padding:72px 40px 40px}
+body.page-investments .page-main .content section:first-child{padding-top:0}
+body.page-ideas .section-title h2,body.page-home .journey .bio-section .bio-heading{font:400 var(--type-section)/1.18 var(--font-display);letter-spacing:-.025em}
+body.page-ideas .card h3,body.page-ideas .editorial-list h3{font:400 var(--type-card)/1.25 var(--font-display);letter-spacing:-.02em}
+body.page-ideas .meta,body.page-ideas .editorial-list .meta{font:400 var(--type-label)/1.5 var(--font-body);letter-spacing:0}
+body.page-ideas .format-label{font:400 var(--type-label)/1.5 var(--font-body);letter-spacing:.09em}
+body.page-ideas .card-body p,body.page-home .journey .bio-bullets li,body.page-home .journey .beliefs li,body.page-home .journey .beliefs p{font:400 var(--type-body)/1.5 var(--font-body)}
+body.page-ideas .card-body a,body.page-home .journey .belief-section .belief-cta{font:400 15px/1.5 var(--font-body)}
+body.page-investments .acquisition{font:400 11px/1.4 var(--font-body);letter-spacing:.065em}
+.site-footer .footer-socials a{font:500 18px/1.4 var(--font-body)}
+@media(max-width:700px){:root{--type-body:15px}body.page-investments .page-main .content,body.page-ideas main{padding:48px 24px 30px}body.page-ideas .page-heading h1,body.page-investments .section-heading{margin-bottom:44px}.navigation,.navigation .nav-items{font-size:13px}}
+
+/* Shared brand rhythm for the two index pages. */
+:root{--paper:#f7f5ef;--ink:#142d3c;--muted:#626a6d;--rule:rgba(20,45,60,.18);--card-radius:16px;--section-gap:80px}
+body.page-investments,body.page-ideas{background:var(--paper);color:var(--ink);min-height:100svh}
+body.page-investments .navigation,body.page-ideas .navigation{background:transparent;color:var(--ink);border-bottom-color:var(--rule)}
+body.page-investments .page-heading,body.page-ideas .page-heading{display:block;margin:0 0 64px}
+body.page-investments .page-heading h1,body.page-ideas .page-heading h1{margin:0;color:var(--ink);max-width:960px}
+body.page-ideas section{margin-bottom:var(--section-gap)}
+body.page-ideas .section-title{margin-bottom:28px}
+body.page-ideas .meta,body.page-ideas .format-label,body.page-ideas .card-body p,body.page-investments .acquisition{color:var(--muted)}
+body.page-ideas .card{border-color:transparent;border-radius:var(--card-radius)}
+body.page-ideas .editorial-list{border-top-color:var(--rule)}
+body.page-ideas .editorial-list .editorial-item{border-radius:0;border-bottom-color:var(--rule)}
+body.page-ideas .editorial-list .editorial-item:hover,body.page-ideas .editorial-list .editorial-item[open]{background:#142d3c04}
+body.page-ideas .card:hover,body.page-ideas .card[open]{box-shadow:0 0 0 1px var(--rule)}
+body.page-ideas .editorial-list .editorial-item:hover,body.page-ideas .editorial-list .editorial-item[open]{box-shadow:none}
+body.page-ideas .card-body a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+body.page-investments .acquisition{text-transform:none;letter-spacing:0;font-size:12px}
+body.page-investments .site-footer,body.page-ideas .site-footer{margin-top:64px;padding:28px 0 24px;border-top-color:var(--rule);color:var(--ink)}
+body.page-ideas main>section:last-of-type{margin-bottom:0}
+@media(max-width:700px){:root{--section-gap:56px}body.page-investments .page-heading,body.page-ideas .page-heading{margin-bottom:44px}body.page-investments .site-footer,body.page-ideas .site-footer{margin-top:48px}}

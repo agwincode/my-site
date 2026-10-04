@@ -1,0 +1,31 @@
+---
+---
+
+<div class="ticker-wrap reveal">
+	<div class="ticker">
+		<span>ROBOTICS // ARTIFICIAL INTELLIGENCE // PUBLIC SAFETY // DEEP TECH // DEFENSE // ROBOTICS // ARTIFICIAL INTELLIGENCE // PUBLIC SAFETY // DEEP TECH // DEFENSE</span>
+	</div>
+</div>
+
+<style>
+	/* Ticker */
+	.ticker-wrap {
+		width: 100%;
+		overflow: hidden;
+		background: rgba(138, 142, 61, 0.03);
+		border-top: 1px solid rgba(138, 142, 61, 0.1);
+		border-bottom: 1px solid rgba(138, 142, 61, 0.1);
+		padding: 1rem 0;
+		margin: 1rem 0;
+	}
+	.ticker {
+		white-space: nowrap;
+		animation: ticker 35s linear infinite;
+		font-size: 0.85rem;
+		letter-spacing: 0.5rem;
+		font-weight: 700;
+		color: var(--p-olive);
+		text-shadow: 0 0 10px rgba(138, 142, 61, 0.2);
+	}
+	@keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+</style>
