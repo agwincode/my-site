@@ -1,0 +1,122 @@
+---
+interface Offer {
+	badge: string;
+	title: string;
+	description: string;
+	class?: string;
+}
+
+const offers: Offer[] = [
+	{
+		badge: "CATEGORY LEADERSHIP",
+		title: "Strategic Positioning & Narrative",
+		description: "In a world of rapid commoditization, differentiation is a moving target. We identify the specific wedge that wins category authority and translate it into a high-trust narrative that breaks through the noise.",
+		class: "flagship"
+	},
+	{
+		badge: "REVENUE ACCELERATION",
+		title: "PLG & Monetization Engine",
+		description: "Bridge the gap between bottom-up user growth and top-down enterprise procurement."
+	},
+	{
+		badge: "OPERATIONAL SCALE",
+		title: "Fractional CMO for AI-Native Orgs",
+		description: "Embed an operator-led growth function into your team. We manage the transition from experiment to high-leverage marketing engine."
+	},
+	{
+		badge: "MARKET AUTHORITY",
+		title: "Comms Strategy & Executive Authority",
+		description: "Architect the founding story and executive roadmap. High-signal direction that wins category mindshare, without the execution burden.",
+		class: "advisory"
+	},
+	{
+		badge: "FUTURE OF WORK",
+		title: "AI-Native Org Design",
+		description: "In a world of shifting boundaries, we define where the human ends and the agent begins. Build a lean, hybrid team optimized for the high-leverage era."
+	}
+];
+---
+
+<section id="offerings" class="bento-section">
+	<div class="container">
+		<h2 class="section-title reveal">Productized Sprints</h2>
+		
+		<div class="bento-grid">
+			{offers.map((offer) => (
+				<div class={`bento-card anodized sheen ${offer.class || ''}`}>
+					<div class="card-content">
+						<span class="badge">{offer.badge}</span>
+						<h3>{offer.title}</h3>
+						<p>{offer.description}</p>
+					</div>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.bento-section { padding: 4rem 0; position: relative; }
+	.section-title { font-size: 2.5rem; margin-bottom: 4rem; }
+	.bento-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-auto-rows: 280px;
+		gap: 1.5rem;
+		z-index: 2;
+		position: relative;
+	}
+	.bento-card {
+		background: rgba(255, 255, 255, 0.03);
+		border: 1px solid var(--border-dim);
+		padding: 2rem;
+		position: relative;
+		overflow: hidden;
+		transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	:global(.bento-card.active) { opacity: 1 !important; transform: translateY(0) !important; }
+	
+	.flagship {
+		grid-column: span 2;
+		background: linear-gradient(135deg, rgba(45, 77, 53, 0.2) 0%, rgba(10, 10, 10, 1) 100%);
+	}
+	
+	.anodized:hover {
+		border-color: var(--p-blue);
+		background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(10, 10, 10, 1) 100%);
+		transform: translateY(-5px);
+	}
+
+	/* Sheen Animation */
+	@keyframes sheen {
+		0% { transform: translateX(-100%) rotate(45deg); }
+		100% { transform: translateX(200%) rotate(45deg); }
+	}
+	.sheen::after {
+		content: "";
+		position: absolute;
+		top: -50%; left: -50%; width: 200%; height: 200%;
+		background: linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent);
+		transform: rotate(45deg);
+		animation: sheen 10s infinite;
+		pointer-events: none;
+	}
+
+	.bento-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+	.bento-card p { color: var(--fg-muted); font-size: 0.95rem; line-height: 1.5; }
+
+	@media (max-width: 968px) {
+		.bento-grid { grid-template-columns: 1fr; grid-auto-rows: auto; }
+		.flagship { grid-column: span 1; }
+	}
+
+	@media (max-width: 768px) {
+		.bento-section { padding: 4rem 0; }
+		.section-title { font-size: 2rem; margin-bottom: 3rem; text-align: center; }
+		.bento-card { padding: 2rem 1.5rem; }
+		.bento-card h3 { font-size: 1.35rem; }
+		.bento-card p { font-size: 0.9rem; }
+	}
+</style>

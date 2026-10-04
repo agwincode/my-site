@@ -1,0 +1,5 @@
+---
+import { readFileSync } from "node:fs";
+const html = readFileSync(new URL("../../.generated/index.html", import.meta.url), "utf8");
+---
+<Fragment set:html={html} />
