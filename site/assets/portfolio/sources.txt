@@ -1,0 +1,20 @@
+listen.svg: https://listenlabs.ai — official header SVG mask
+gyde.svg: https://www.gydehealth.ai/ — official header SVG
+Retrieved September 8, 2026; standalone SVG extraction, display colors normalized.
+
+Retrieved 2026-09-08; header SVGs extracted without changing shapes. White/currentColor values normalized for white cards.
+anzen: https://www.anzen.com/
+candor: https://cdn.prod.website-files.com/64908e9921442531cb25bd35/659f9371de7415e7fd4f8331_CandorLogo_Black.svg
+dealops: https://dealops.com/
+neptune: https://www.meetneptune.com/logos/wordmark-white.svg
+pocus: https://www.pocus.com/
+sharpperformance: https://www.sharpperformance.com/
+stell: https://stell-engineering.com/ (header symbol svg32424549_5911)
+vitvio: https://www.vitvio.com/
+mintmcp: https://www.mintmcp.com/ (header mark plus native text)
+nevara: https://nevara.ai/nevara-logo.png
+ShortKit and Sundays: text-based homepage branding; local system-font approximations, no font downloads. E9: plain company label retained; no logo asset found. Fira and Seldon await identity confirmation. SafeBase official assets blocked with HTTP 403.
+
+Adaptive Innovations: official inline SVG wordmark from https://www.adaptive.co/ (2026-10-03). Former Fira Health URL redirects here.
+
+Seldon: https://seldon.global/logo.svg (official Organization metadata logo, 2026-10-03).

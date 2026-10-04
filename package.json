@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "prebuild": "node site/build.mjs",
+    "predev": "node site/build.mjs"
   },
   "dependencies": {
     "astro": "^4.0.0"
