@@ -21,8 +21,9 @@ for (const [source, destination] of [['index.html','index.html'],['portfolio.htm
   html = html.replace(/src="(assets\/podcasts\/[a-z0-9-]+\.(?:jpg|png))"/g, (_, path) => `src="data:${path.endsWith('.png') ? 'image/png' : 'image/jpeg'};base64,${readFileSync(new URL(path, root)).toString('base64')}"`);
   html = html.replace(/src="(assets\/portrait\/[a-z0-9-]+\.avif)"/g, (_, path) => `src="data:image/avif;base64,${readFileSync(new URL(path, root)).toString('base64')}"`);
   if (/<script\b[^>]*\bsrc=["']src\//.test(html)) throw new Error(`Unbundled script in ${destination}`);
-  if (source === 'index.html' && !html.includes('function prepareArtwork')) throw new Error('Homepage animation missing');
+  if (source === 'index.html' && !html.includes('hero-film')) throw new Error('Homepage animation missing');
   html = html.replaceAll('href="balloon-breeze.html', 'href="/').replaceAll('href="index.html', 'href="/').replaceAll('href="portfolio.html', 'href="/investments/').replaceAll('href="research.html', 'href="/content/');
+  html = html.replaceAll('assets/hero-film/', '/assets/hero-film/');
   // Cache image assets independently instead of shipping base64 inside every HTML page.
   mkdirSync(new URL('../public/assets/site/', root), { recursive: true });
   html = html.replace(/data:image\/(png|jpeg|avif|svg\+xml);base64,([A-Za-z0-9+/=]+)/g, (_, mime, data) => {
